@@ -108,3 +108,92 @@ Developers
 
 Team As Mentioned in Solution Challenge PPT
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>EduRoot Chatbot</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: #f0f4f8;
+    }
+    #chatContainer {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 500px;
+      margin: auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    #chatInput {
+      width: 80%;
+      padding: 10px;
+      margin-right: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    #sendBtn {
+      padding: 10px 15px;
+      background: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    #sendBtn:hover {
+      background: #0056b3;
+    }
+    #chatResponse {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="chatContainer">
+    <h2>EduRoot Chatbot</h2>
+    <input type="text" id="chatInput" placeholder="Ask me anything..."/>
+    <button id="sendBtn" onclick="sendChat()">Send</button>
+    <div id="chatResponse"></div>
+  </div>
+
+  <script>
+    function sendChat() {
+      const input = document.getElementById("chatInput").value.toLowerCase();
+      const response = document.getElementById("chatResponse");
+
+      const replies = [
+        { keywords: ["math", "algebra", "geometry"], reply: "Math is a core skill! You can start with our mathematics videos." },
+        { keywords: ["history", "world war", "ancient"], reply: "History is fascinating! Check out our world history content." },
+        { keywords: ["science", "physics", "chemistry", "biology"], reply: "Science helps us understand the world. Visit the science section." },
+        { keywords: ["ui", "ux", "design", "interface"], reply: "UI/UX Design is all about user experience. Try our design tutorials!" },
+        { keywords: ["mental", "stress", "health", "depression"], reply: "Mental health is important. You can revisit the wellness check or talk to someone you trust." },
+        { keywords: ["language", "notes", "tamil", "malayalam"], reply: "You can select your preferred language in the notes section!" },
+        { keywords: ["hello", "hi", "hey"], reply: "Hello! How can I assist you today?" },
+        { keywords: ["bye", "thank", "goodbye"], reply: "You're welcome! Feel free to return anytime!" },
+        { keywords: ["video", "content", "learn"], reply: "We offer videos in many subjects. Check out the educational videos section." }
+      ];
+
+      let foundReply = "Hmm... I’m still learning. Can you ask in a different way or be more specific?";
+
+      for (const item of replies) {
+        for (const keyword of item.keywords) {
+          if (input.includes(keyword)) {
+            foundReply = item.reply;
+            break;
+          }
+        }
+        if (foundReply !== "Hmm... I’m still learning. Can you ask in a different way or be more specific?") break;
+      }
+
+      response.innerText = foundReply;
+    }
+  </script>
+
+</body>
+</html>
+
