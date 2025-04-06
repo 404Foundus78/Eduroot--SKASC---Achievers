@@ -197,3 +197,33 @@ Team As Mentioned in Solution Challenge PPT
 </body>
 </html>
 
+function sendChat() {
+  const input = document.getElementById("chatInput").value.toLowerCase();
+  const response = document.getElementById("chatResponse");
+
+  const replies = [
+    { keywords: ["math", "algebra", "geometry"], reply: "Math is a core skill! You can start with our mathematics videos." },
+    { keywords: ["history", "world war", "ancient"], reply: "History is fascinating! Check out our world history content." },
+    { keywords: ["science", "physics", "chemistry", "biology"], reply: "Science helps us understand the world. Visit the science section." },
+    { keywords: ["ui", "ux", "design", "interface"], reply: "UI/UX Design is all about user experience. Try our design tutorials!" },
+    { keywords: ["mental", "stress", "health", "depression"], reply: "Mental health is important. You can revisit the wellness check or talk to someone you trust." },
+    { keywords: ["language", "notes", "tamil", "malayalam"], reply: "You can select your preferred language in the notes section!" },
+    { keywords: ["hello", "hi", "hey"], reply: "Hello! How can I assist you today?" },
+    { keywords: ["bye", "thank", "goodbye"], reply: "You're welcome! Feel free to return anytime!" },
+    { keywords: ["video", "content", "learn"], reply: "We offer videos in many subjects. Check out the educational videos section." }
+  ];
+
+  let foundReply = "Hmm... I’m still learning. Can you ask in a different way or be more specific?";
+
+  for (const item of replies) {
+    for (const keyword of item.keywords) {
+      if (input.includes(keyword)) {
+        foundReply = item.reply;
+        break;
+      }
+    }
+    if (foundReply !== "Hmm... I’m still learning. Can you ask in a different way or be more specific?") break;
+  }
+
+  response.innerText = foundReply;
+}
